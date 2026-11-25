@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso y Registro | NBA Live Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="login-bg d-flex align-items-center min-vh-100 py-4">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-lg-4">
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                    <div class="card-header bg-dark text-white text-center py-4 border-0" style="background: linear-gradient(135deg, #0b0f19 0%, #1d428a 100%);">
+                        <div class="mb-2">
+                            <span class="brand-badge text-white fs-5">🏀 NBA LIVE</span>
+                        </div>
+                        <h5 class="mb-0 fw-bold">Center & Stats</h5>
+                        <small class="text-white-50">Marcadores, Horarios y Estadísticas</small>
+                    </div>
+
+                    <div class="card-body p-4 bg-white">
+                        <!-- Pestañas Iniciar Sesión / Crear Cuenta -->
+                        <ul class="nav nav-pills nav-fill mb-4 bg-dark p-1 rounded-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active fw-bold small rounded-3" id="tab-login" data-bs-toggle="pill" data-bs-target="#panel-login" type="button" role="tab">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar Sesión
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link fw-bold small rounded-3" id="tab-registro" data-bs-toggle="pill" data-bs-target="#panel-registro" type="button" role="tab">
+                                    <i class="bi bi-person-plus me-1"></i> Crear Cuenta
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <!-- Formulario Login -->
+                            <div class="tab-pane fade show active" id="panel-login" role="tabpanel">
+                                <form id="formLogin">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small text-secondary">Usuario</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+                                            <input type="text" id="inputUser" class="form-control py-2" placeholder="Ej. admin o fan1" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold small text-secondary">Contraseña</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                                            <input type="password" id="inputPass" class="form-control py-2" placeholder="Escribe tu contraseña" required>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-nba-primary w-100 py-2 rounded-3 shadow-sm">
+                                        Entrar a la Cancha <i class="bi bi-arrow-right ms-1"></i>
+                                    </button>
+                                    <div id="errorMsg" class="alert alert-danger py-2 small fw-bold mt-3 text-center d-none">
+                                        <i class="bi bi-exclamation-triangle me-1"></i> Usuario o contraseña incorrectos.
+                                    </div>
+                                </form>
+
+                                <div class="mt-4 pt-3 border-top text-center bg-light rounded-3 p-2">
+                                    <small class="text-muted fw-bold d-block mb-1">Accesos Rápidos de Prueba</small>
+                                    <small class="text-secondary d-block">Admin: <code>admin</code> / <code>1234</code></small>
+                                    <small class="text-secondary d-block">Usuario: <code>fan1</code> / <code>1234</code></small>
+                                </div>
+                            </div>
+
+                            <!-- Formulario Registro -->
+                            <div class="tab-pane fade" id="panel-registro" role="tabpanel">
+                                <form id="formRegistro">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small text-secondary">Nombre Completo</label>
+                                        <input type="text" id="regNombre" class="form-control py-2 rounded-3" placeholder="Ej. Edwin Pacheco" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small text-secondary">Nombre de Usuario</label>
+                                        <input type="text" id="regUser" class="form-control py-2 rounded-3" placeholder="Ej. edwin23" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small text-secondary">Contraseña</label>
+                                        <input type="password" id="regPass" class="form-control py-2 rounded-3" placeholder="Crea una contraseña" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold small text-secondary">Confirmar Contraseña</label>
+                                        <input type="password" id="regPassConfirm" class="form-control py-2 rounded-3" placeholder="Repite tu contraseña" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100 fw-bold py-2 rounded-3 shadow-sm">
+                                        <i class="bi bi-check-circle me-1"></i> Registrarme y Entrar
+                                    </button>
+                                    <div id="regErrorMsg" class="alert alert-danger py-2 small fw-bold mt-3 text-center d-none"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

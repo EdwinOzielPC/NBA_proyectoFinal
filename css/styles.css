@@ -1,0 +1,104 @@
+/* css/styles.css - Estilo Deportivo NBA Live Center */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+    --nba-dark: #0b0f19;
+    --nba-card: #131a2a;
+    --nba-card-hover: #1a2338;
+    --nba-blue: #1d428a;
+    --nba-red: #c8102e;
+    --nba-accent: #f59e0b;
+    --nba-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+/* Fondo especial para el Login */
+body.login-bg {
+    background: radial-gradient(circle at top right, #1d428a 0%, #0b0f19 55%, #05070c 100%);
+}
+
+/* Navbar estilo ESPN / NBA */
+.navbar-nba {
+    background: linear-gradient(90deg, #0b0f19 0%, #151e32 100%);
+    border-bottom: 3px solid var(--nba-red);
+}
+
+.brand-badge {
+    background: linear-gradient(135deg, var(--nba-blue), var(--nba-red));
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+/* Tarjetas de Partidos y Estadísticas */
+.card-nba {
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #ffffff;
+}
+
+.card-nba:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* Marcadores numéricos grandes */
+.score-num {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -1px;
+}
+
+/* Indicador parpadeante para partidos EN VIVO */
+@keyframes pulseLive {
+    0% { opacity: 1; }
+    50% { opacity: 0.45; }
+    100% { opacity: 1; }
+}
+
+.badge-live {
+    background-color: var(--nba-red) !important;
+    color: #fff;
+    animation: pulseLive 1.5s infinite;
+}
+
+/* Botones principales */
+.btn-nba-primary {
+    background-color: var(--nba-blue);
+    border-color: var(--nba-blue);
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-nba-primary:hover {
+    background-color: #15326b;
+    border-color: #15326b;
+    color: #fff;
+}
+
+/* Pestañas del Login */
+.nav-pills .nav-link {
+    color: #94a3b8;
+    transition: all 0.2s;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--nba-blue) !important;
+    color: #ffffff !important;
+}
+
+/* Logos de equipos con sombra sutil */
+.team-logo {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+    transition: transform 0.2s ease;
+}
+
+.card-nba:hover .team-logo {
+    transform: scale(1.08);
+}

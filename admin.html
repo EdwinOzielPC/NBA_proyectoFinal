@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador | NBA Live Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="min-vh-100 d-flex flex-column">
+
+    <!-- Barra superior -->
+    <nav class="navbar navbar-dark navbar-nba shadow-sm py-3">
+        <div class="container">
+            <span class="navbar-brand fw-bold d-flex align-items-center gap-2">
+                <span class="brand-badge">🏀 NBA</span>
+                <span>Panel Administrador</span>
+            </span>
+            <div class="d-flex align-items-center gap-2">
+                <a href="nba.html" class="btn btn-sm btn-outline-light rounded-3">
+                    <i class="bi bi-tv me-1"></i> Ver Cartelera NBA
+                </a>
+                <button type="button" id="btnSalir" class="btn btn-sm btn-danger fw-bold px-3 rounded-3">
+                    <i class="bi bi-box-arrow-right me-1"></i> Salir
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4 flex-grow-1">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h4 class="fw-bold mb-0">Estadísticas de la Plataforma</h4>
+                <small class="text-muted">Monitoreo en tiempo real de usuarios y actividad de la API</small>
+            </div>
+        </div>
+
+        <!-- Tarjetas de Estadísticas -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-lg-3">
+                <div class="card card-nba border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <small class="text-muted fw-bold text-uppercase">En Línea Ahora</small>
+                                <h2 class="fw-bold mb-0 mt-1 text-success score-num" id="statConectados">1</h2>
+                            </div>
+                            <div class="bg-success bg-opacity-10 text-success p-3 rounded-4">
+                                <i class="bi bi-broadcast fs-4"></i>
+                            </div>
+                        </div>
+                        <small class="text-success fw-semibold d-block mt-2">● Activos en la web</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card card-nba border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <small class="text-muted fw-bold text-uppercase">Cuentas Totales</small>
+                                <h2 class="fw-bold mb-0 mt-1 text-primary score-num" id="statTotalUsuarios">0</h2>
+                            </div>
+                            <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-4">
+                                <i class="bi bi-people-fill fs-4"></i>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-2">Admins y aficionados</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card card-nba border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <small class="text-muted fw-bold text-uppercase">Peticiones API</small>
+                                <h2 class="fw-bold mb-0 mt-1 text-dark score-num" id="statConsultasApi">0</h2>
+                            </div>
+                            <div class="bg-warning bg-opacity-25 text-warning-emphasis p-3 rounded-4">
+                                <i class="bi bi-cloud-arrow-down-fill fs-4"></i>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-2">Consultas a API-Ninjas</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card card-nba border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <small class="text-muted fw-bold text-uppercase">Partidos Seguidos</small>
+                                <h2 class="fw-bold mb-0 mt-1 text-danger score-num" id="statPartidosGuardados">0</h2>
+                            </div>
+                            <div class="bg-danger bg-opacity-10 text-danger p-3 rounded-4">
+                                <i class="bi bi-star-fill fs-4"></i>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-2">Guardados en favoritos</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usuarios Conectados -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-white fw-bold py-3 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <span><i class="bi bi-activity text-success me-2"></i>Usuarios Conectados al Momento</span>
+                <button type="button" id="btnSimularVisita" class="btn btn-sm btn-nba-primary rounded-3">
+                    <i class="bi bi-person-plus-fill me-1"></i> Simular nuevo visitante
+                </button>
+            </div>
+            <div class="card-body p-4">
+                <div id="listaConectados" class="d-flex flex-wrap gap-2"></div>
+            </div>
+        </div>
+
+        <!-- CRUD de Cuentas -->
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-header text-white fw-bold py-3" style="background-color: #0b0f19;" id="tituloForm">
+                        Agregar Cuenta
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="formUsuario">
+                            <input type="hidden" id="editIndex" value="-1">
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-secondary">Nombre</label>
+                                <input type="text" id="campoNombre" class="form-control rounded-3" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-secondary">Usuario</label>
+                                <input type="text" id="campoUser" class="form-control rounded-3" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-secondary">Contraseña</label>
+                                <input type="text" id="campoPass" class="form-control rounded-3" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label small fw-bold text-secondary">Rol</label>
+                                <select id="campoRol" class="form-select rounded-3">
+                                    <option value="Usuario">Usuario</option>
+                                    <option value="Administrador">Administrador</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-nba-primary w-100 py-2 rounded-3">
+                                <i class="bi bi-save me-1"></i> Guardar Cuenta
+                            </button>
+                            <button type="button" id="btnCancelarEdicion" class="btn btn-outline-secondary w-100 btn-sm mt-2 rounded-3 d-none">
+                                Cancelar Edición
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-header bg-white fw-bold py-3 border-bottom">
+                        <i class="bi bi-shield-lock me-2 text-primary"></i>Cuentas Registradas en el Sistema
+                    </div>
+                    <div class="table-responsive p-3">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light small text-uppercase text-secondary">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Usuario</th>
+                                    <th>Contraseña</th>
+                                    <th>Rol</th>
+                                    <th class="text-end">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaUsuarios"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
